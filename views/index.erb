@@ -1,0 +1,63 @@
+<head>
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<!-- notice that we got rid of the <form> tag here.
+     it was in that tag that we stated what type of
+     HTTP request we are intending to make and to
+     which route inside our application. Remember it
+     looked something like this:
+     <form action="/post" method="POST"> 
+     
+     We can now state that information inside the
+     AJAX request itself. Because we got rid of the
+     <form> tag we also dont have to have a name
+     attribute for the textbox. It does, however,
+     need an id attribute so you can grab its value
+     further down the page. We have also added an id
+     attribute to the submit button so we can listen
+     for when it is clicked.  -->
+<center>
+<h2>AJAX + Sinatra = Fanciness</h2><br />
+Enter a word:<br />
+<input type="text" id="userword"><br />
+<input type="submit" id="wordsubmit">
+
+<script>
+// line 30 is only needed if you are loading  your
+// javascripts before the rest of the page is
+// finished loading.
+$(document).ready(function(){
+    // line 33 is looking at the submit button and
+    // will execute the function when it is clicked
+    $('#wordsubmit').click(function(e){
+        // this is where is the beginning of a jQuery
+        // ajax call. this is where the route info goes.
+        $.ajax({
+            // the route we are sending the request to
+            url: "/",
+            // the type of request we are sending...
+            type: "POST",
+            // the actual data. THIS IS THE PARAMS HASH.
+            // notice that the key is 'userword' just like
+            // what we are expecting on line 15 of server.rb
+            // the value is the some jQuery code to grab
+            // the value of the #userword textbox.
+            data: { userword: $('#userword').val() },
+            // the next few lines say what we want to do
+            // if the request is sent successfully. the
+            // response from our server is saved in 'result'
+            // and we then append that response to the
+            // #translation div on the page.
+            success: function(result){
+            // this is where we actually stick the translated
+            // word that our route provided.
+                $('#translation').append('<h3>Translation: ' + result + '</h3>');
+            }
+        });
+    });
+});
+</script>
+
+<div id="translation"></div>
+</center>

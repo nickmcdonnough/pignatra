@@ -1,0 +1,24 @@
+GIT
+  remote: https://github.com/efollender/pig_latin.git
+  revision: 527faedcf7d8e7251f330873334b1dd0bea53af4
+  specs:
+    pig_latin (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rack (1.5.2)
+    rack-protection (1.5.3)
+      rack
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    tilt (1.4.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pig_latin!
+  sinatra
