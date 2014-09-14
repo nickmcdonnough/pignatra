@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'pig_latin'
-
+require 'pry-byebug'
+require 'json'
 # uncomment the next line if you are using vagrant
 # set :bind, '0.0.0.0'
 
